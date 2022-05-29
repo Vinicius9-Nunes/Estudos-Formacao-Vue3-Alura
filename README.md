@@ -19,4 +19,4 @@
 ---
 
 ## Exercicios
-[Contador de Numeros](https://github.com/Vinicius9-Nunes/Estudos-Formacao-Vue3-Alura/blob/main/Exercicios/contador-numeros/README.md)
+[Contador de Numeros](https://github.com/Vinicius9-Nunes/Estudos-Formacao-Vue3-Alura/blob/main/Exercicios/contador-numeros/README.md#contador-numeros)
