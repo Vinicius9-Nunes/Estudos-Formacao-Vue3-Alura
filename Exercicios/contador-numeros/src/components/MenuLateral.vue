@@ -1,6 +1,6 @@
 <template>
     <header class="columns is-justify-content-center">
-        <img src="../assets/verifica.png" alt="Logo Contador Numeros">
+        <img src="../assets/logo.png" alt="Logo Contador Numeros">
     </header>
 </template>
 
@@ -15,7 +15,7 @@ export default defineComponent({
 
 <style>
 header {
-    background-color: rgb(76, 46, 116);
+    background-color: rgb(15, 12, 39);
     width: 100%;
     height: 100vh;
 }
