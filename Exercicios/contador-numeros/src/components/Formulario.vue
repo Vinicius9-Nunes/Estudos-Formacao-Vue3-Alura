@@ -40,39 +40,43 @@
 
   export default defineComponent({
     name: "FomularioCentral",
-    data(){
-        return {
-            contadorInput: '',
-            contador: 0,
-            intervalo: 0,
-            desabilitarInput: false
-        }
+    data() {
+      return {
+        contadorInput: "",
+        contador: 0,
+        intervalo: 0,
+        desabilitarInput: false,
+      };
     },
     methods: {
-        contar(){
-            this.desabilitarInput = true
-            this.contador = 0
-            this.intervalo = setInterval(() => {
-                if(this.verificarContagemTerminada()){
-                    this.finalizar()
-                }
-                else{
-                    this.contador += 1
-                    console.log(this.contador);
-                }
-            }, 500)
-        },
-        verificarContagemTerminada(){
-            let valor = parseInt(this.contadorInput)
-            return this.contador == valor
-        },
-        finalizar(){
-            clearInterval(this.intervalo)
-            this.contadorInput = ''
-            this.intervalo = 0
-            this.desabilitarInput = !this.desabilitarInput
+      contar() {       
+        if(isNaN(parseInt(this.contadorInput))){
+          alert('É necessario informar um valor.')
+          return
         }
-    }
+                
+        this.desabilitarInput = true;
+        this.contador = 0;
+        this.intervalo = setInterval(() => {
+          if (this.verificarContagemTerminada()) {
+            this.finalizar();
+          } else {
+            this.contador += 1;
+            console.log(this.contador);
+          }
+        }, 500);
+      },
+      verificarContagemTerminada() {
+        let valor = parseInt(this.contadorInput);
+        return this.contador == valor;
+      },
+      finalizar() {
+        clearInterval(this.intervalo);
+        this.contadorInput = "";
+        this.intervalo = 0;
+        this.desabilitarInput = !this.desabilitarInput;
+      },
+    },
   });
 </script>
 
