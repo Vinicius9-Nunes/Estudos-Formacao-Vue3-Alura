@@ -47,14 +47,14 @@
       PegarTextoAoCopiar(texto: string) {
         this.textoAtual = texto;
         navigator.clipboard.writeText(texto);
-      },
+      }
     },
     mounted() {
       let json = JSON.stringify(jsonRespostas);
       this.respostas = JSON.parse(json).sort((a: IResposta, b: IResposta) => {
-        if(a.Titulo > b.Titulo) return 1
-        if(a.Titulo < b.Titulo) return -1
-        return 0
+        if (a.Titulo > b.Titulo) return 1;
+        if (a.Titulo < b.Titulo) return -1;
+        return 0;
       });
     },
   });
