@@ -29,3 +29,4 @@
     color: var(--texto-primario);
     background-color: var(--bg-primario);
   }
+</style>
