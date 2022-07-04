@@ -1,33 +1,29 @@
 <template>
   <section>
-    <strong class="display">
+    <strong>
       {{ tempoDecorrido }}
     </strong>
   </section>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from "vue";
+import {defineComponent} from 'vue'
 
-  export default defineComponent({
-    name: "CronometroComponent",
+export default defineComponent({
+    name: 'CronometroComponent',
     props: {
-      tempoEmSegundo: {
-        type: Number,
-        default: 0,
-      },
+        tempoEmSegundo: {
+            type: Number,
+            default: 0
+        }
     },
-    computed: {
-      tempoDecorrido(): string {
-        return new Date(this.tempoEmSegundo * 1000).toISOString().substr(11, 8);
-      },
-    },
-  });
+    computed:{
+      tempoDecorrido(): string{
+        return new Date(this.tempoEmSegundo * 1000).toISOString().substr(11,8)
+      }
+    }
+});
 </script>
 
 <style>
-  .display {
-    color: var(--texto-primario);
-    background-color: var(--bg-primario);
-  }
 </style>

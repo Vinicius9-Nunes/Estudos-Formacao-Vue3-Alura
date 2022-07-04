@@ -1,10 +1,15 @@
 <template>
-  <main  class="columns is-gapless is-multiline" :class="{ 'modo-escuro': modoEscuroAtivo }">
+  <main  class="columns is-gapless is-multiline">
     <div class="column is-one-quarter">
-      <BarraLateral @aoTemaAlterado="trocarTema"/>
+      <BarraLateral/>
     </div>
+<<<<<<< HEAD
     <div class="column is-three-quarter conteudo">
       <Formulario @aoCriarTarefa="criarTarefa"/>
+=======
+    <div class="column is-three-quarter">
+      <Formulario @aoSalvarTarefa="salvarTarefa"/>
+>>>>>>> parent of 3c6daa2 (Ajuste para modo escuro)
       <div class="lista">
         <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
         <Box v-if="listaEstaVazia">
@@ -16,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, transformVNodeArgs } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
 import Formulario from './components/Formulario.vue';
 import Tarefa from './components/Tarefa.vue';
@@ -28,17 +33,21 @@ export default defineComponent({
     components: { BarraLateral, Formulario, Tarefa, Box },
     data(){
       return {
-        tarefas: [] as ITarefa[],
-        modoEscuroAtivo: false
+        tarefas: [] as ITarefa[]
       }
     },
     methods:{
+<<<<<<< HEAD
       criarTarefa(descricaoTarefa: string){
         const VALOR_INICIAL_TAREFA = 0
         this.tarefas.push({descricao: descricaoTarefa, duracaoEmSegundos: VALOR_INICIAL_TAREFA})
       },
       trocarTema(modoEscuroAtivo: boolean){
         this.modoEscuroAtivo = modoEscuroAtivo
+=======
+      salvarTarefa(tarefa: ITarefa){
+        this.tarefas.push(tarefa)
+>>>>>>> parent of 3c6daa2 (Ajuste para modo escuro)
       }
     },
     computed:{
@@ -52,16 +61,5 @@ export default defineComponent({
 <style>
 .lista{
   padding: 1.25rem;
-}
-main{
-  --bg-primario: #fff;
-  --texto-primario: #000;
-}
-main.modo-escuro{
-  --bg-primario: #2b2d42;
-  --texto-primario: #ddd;
-}
-.conteudo{
-  background-color: var(--bg-primario);
 }
 </style>
