@@ -1,6 +1,6 @@
 <template>
   <div class="is-flex is-align-items-center is-justify-content-space-between">
-    <Cronometro :tempoEmSegundo="tempoEmSegundo" />
+    <CronometroTarefa :tempoEmSegundo="tempoEmSegundo" />
     <Botao @aoClicar="iniciar" 
             :botao-habilitado="temporizadorIniciado"
             icone="fas fa-play"
@@ -14,11 +14,11 @@
 
 <script lang="ts">
   import { defineComponent } from "vue";
-  import Cronometro from "./Cronometro.vue";
+  import CronometroTarefa from "./CronometroTarefa.vue";
   import Botao from "./Botao.vue";
   export default defineComponent({
     name: "TemporizadorComponent",
-    components: { Cronometro, Botao },
+    components: { CronometroTarefa, Botao },
     emits: ["aoTemporizadorFinalizado"],
     data() {
       return {
@@ -44,6 +44,3 @@
     },
   });
 </script>
-
-<style>
-</style>
