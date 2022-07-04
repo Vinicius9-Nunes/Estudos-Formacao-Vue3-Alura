@@ -14,7 +14,7 @@
         />
       </div>
       <div class="column">
-        <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
+        <button class="button" @click="criarTarefa">Criar Tarefa</button>
       </div>
     </div>
   </div>
@@ -22,23 +22,18 @@
 
 <script lang="ts">
   import { defineComponent } from "vue";
-  import Temporizador from "./Temporizador.vue";
 
   export default defineComponent({
     name: "FormularioMeio",
-    components: { Temporizador },
-    emits: ["aoSalvarTarefa"],
+    emits: ["aoCriarTarefa"],
     data() {
       return {
         descricaoTarefa: "",
       };
     },
     methods: {
-      finalizarTarefa(tempoDecorrido: number): void {
-        this.$emit("aoSalvarTarefa", {
-          duracaoEmSegundos: tempoDecorrido,
-          descricao: this.descricaoTarefa,
-        });
+      criarTarefa(): void {
+        this.$emit("aoCriarTarefa", this.descricaoTarefa);
         this.descricaoTarefa = "";
       },
     },

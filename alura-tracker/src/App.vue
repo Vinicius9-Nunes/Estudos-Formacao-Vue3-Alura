@@ -4,7 +4,7 @@
       <BarraLateral @aoTemaAlterado="trocarTema"/>
     </div>
     <div class="column is-three-quarter conteudo">
-      <Formulario @aoSalvarTarefa="salvarTarefa"/>
+      <Formulario @aoCriarTarefa="criarTarefa"/>
       <div class="lista">
         <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
         <Box v-if="listaEstaVazia">
@@ -33,8 +33,9 @@ export default defineComponent({
       }
     },
     methods:{
-      salvarTarefa(tarefa: ITarefa){
-        this.tarefas.push(tarefa)
+      criarTarefa(descricaoTarefa: string){
+        const VALOR_INICIAL_TAREFA = 0
+        this.tarefas.push({descricao: descricaoTarefa, duracaoEmSegundos: VALOR_INICIAL_TAREFA})
       },
       trocarTema(modoEscuroAtivo: boolean){
         this.modoEscuroAtivo = modoEscuroAtivo
