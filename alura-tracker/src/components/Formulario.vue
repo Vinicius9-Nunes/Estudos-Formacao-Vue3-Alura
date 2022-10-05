@@ -11,6 +11,7 @@
           class="input"
           placeholder="Qual tarefa você deseja"
           v-model="descricaoTarefa"
+          
         />
       </div>
       <div class="column is-3">
@@ -35,7 +36,9 @@
 </template>
 
 <script lang="ts">
+  import { INotificao, TipoNotificao } from "@/Interfaces/Notificao";
   import { key } from "@/store";
+  import { NOTIFICAR } from "@/store/tipo-mutacoes";
   import { computed, defineComponent } from "vue";
   import { useStore } from "vuex";
   import Temporizador from "./Temporizador.vue";
@@ -52,10 +55,21 @@
     },
     methods: {
       finalizarTarefa(tempoDecorrido: number): void {
+        const projeto = this.projetos.find((proj) => proj.id == this.idProjeto);
+        if (!projeto) {
+          this.store.commit(NOTIFICAR, {
+            titulo: "Ops!!! Erro encontrado",
+            texto:
+              "Você não pode adicionar uma tarefa sem vincular ela a um projeto.",
+            tipo: TipoNotificao.FALHA,
+          } as INotificao);
+          return;
+        }
+
         this.$emit("aoSalvarTarefa", {
           duracaoEmSegundos: tempoDecorrido,
           descricao: this.descricaoTarefa,
-          projeto: this.projetos.find(proj => proj.id == this.idProjeto)
+          projeto: this.projetos.find((proj) => proj.id == this.idProjeto),
         });
         this.descricaoTarefa = "";
       },
@@ -64,6 +78,7 @@
       const store = useStore(key);
       return {
         projetos: computed(() => store.state.projetos),
+        store,
       };
     },
   });
